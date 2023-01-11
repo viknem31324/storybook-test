@@ -1,5 +1,8 @@
 <template>
   <div class="hello">
+    <AppCheckbox label="Foo" :disabled="false" size="small" value="foo" v-model="MySelectedValues" />
+    <AppCheckbox label="Bar" :disabled="true" value="bar" v-model="MySelectedValues" />
+    <AppCheckbox label="Baz" :disabled="false" size="large" value="baz" v-model="MySelectedValues" />
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
@@ -31,10 +34,19 @@
 </template>
 
 <script>
+import AppCheckbox from '../shared/ui/AppCheckbox/AppCheckbox.vue';
 export default {
   name: 'HelloWorld',
+  data() {
+    return {
+      MySelectedValues: [],
+    };
+  },
   props: {
     msg: String
+  },
+  components: {
+    AppCheckbox,
   }
 }
 </script>
