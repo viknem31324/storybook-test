@@ -1,8 +1,13 @@
 <template>
   <div class="hello">
-    <AppCheckbox label="Foo" :disabled="false" size="small" value="foo" v-model="MySelectedValues" />
-    <AppCheckbox label="Bar" :disabled="true" value="bar" v-model="MySelectedValues" />
-    <AppCheckbox label="Baz" :disabled="false" size="large" value="baz" v-model="MySelectedValues" />
+    <div class="hello__checkbox">
+      <!-- ref lesson -->
+      <AppCheckbox ref="check1" label="Foo" :disabled="false" size="small" value="foo" v-model="mySelectedValues" />
+      <!-- ref lesson -->
+      <AppCheckbox label="Bar" :disabled="true" value="bar" v-model="mySelectedValues" />
+      <AppCheckbox label="Baz" :disabled="false" size="large" value="baz" v-model="mySelectedValues" />
+    </div>
+    <AppInput label="UserName" type="email" v-model="userName" :id="1" :disabled="false" size="medium" placeholder="Введите имя" />
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
@@ -35,11 +40,14 @@
 
 <script>
 import AppCheckbox from '../shared/ui/AppCheckbox/AppCheckbox.vue';
+import AppInput from '../shared/ui/AppInput/AppInput.vue';
+
 export default {
   name: 'HelloWorld',
   data() {
     return {
-      MySelectedValues: [],
+      mySelectedValues: [],
+      userName: '',
     };
   },
   props: {
@@ -47,12 +55,28 @@ export default {
   },
   components: {
     AppCheckbox,
+    AppInput,
+  },
+  mounted () {
+    // ref lesson
+    console.log(this.$refs.check1.$el);
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.hello {
+
+}
+
+.hello__checkbox {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  column-gap: 30px;
+  border: 1px solid black;
+}
 h3 {
   margin: 40px 0 0;
 }

@@ -9,12 +9,6 @@ export default {
       control: { type: 'select' },
       options: ['small', 'medium', 'large'],
     },
-    disabled: {
-      options: [true, false],
-      control: {
-        type: 'radio',
-      }
-    },
   },
 };
 
